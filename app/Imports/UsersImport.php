@@ -35,7 +35,7 @@ class UsersImport implements ToCollection, WithHeadingRow, WithValidation
     public function rules(): array
     {
         return [
-            '*.nombre' => 'required|string|max:255|min:3',
+            '*.nombre' => 'required|unique:excelimportacions,nombre|string|max:255|min:3',
             '*.direccion' => 'required|string|max:255|min:10',
             '*.saldo' => 'required|integer',
             '*.fechanacimiento' => 'required|max:45685',
@@ -50,14 +50,15 @@ class UsersImport implements ToCollection, WithHeadingRow, WithValidation
     public function customvalidationMessages()
     {
         return [
-            '*.nombre' => 'Todos los campos nombre_custommsg son obligatorios.',
-            '*.direccion' => 'Todos los campos direccion_custommsg son obligatorios.',
-            '*.saldo.required' => 'Todos los campos saldo_custommsg son obligatorios.',
-            '*.saldo.integer' => 'Todos los campos saldo_custommsg deben ser numericos.',
-            '*.fechanacimiento.required' => 'Todos los campos fecha_custommsg son obligatorios.',
-            '*.documento' => 'Todos los campos documento_custommsg son obligatorios.',
-            '*.activo.required' => 'Todos los campos activo_custommsg son obligatorios.',
-            '*.activo.in' => 'Todos los campos activo_custommsg deben ser si o no.',
+            '*.nombre' => 'Todos los campos Nombre son obligatorios.',
+            '*.nombre.unique' => 'El campo Nombre esta repetido, por favor revisa los datos.',
+            '*.direccion' => 'Todos los campos Dirección son obligatorios.',
+            '*.saldo.required' => 'Todos los campos Saldo son obligatorios.',
+            '*.saldo.integer' => 'Todos los campos Saldo deben ser numericos.',
+            '*.fechanacimiento.required' => 'Todos los campos Fechanacimiento son obligatorios.',
+            '*.documento' => 'Todos los campos Documento son obligatorios.',
+            '*.activo.required' => 'Todos los campos Activo son obligatorios.',
+            '*.activo.in' => 'Todos los campos Activo deben ser si o no.',
             // Añade otros mensajes personalizados aquí
         ];
     }
