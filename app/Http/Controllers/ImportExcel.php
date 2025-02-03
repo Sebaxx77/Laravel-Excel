@@ -22,7 +22,7 @@ class ImportExcel extends Controller
     {
         $customerData = DB::table('excelimportacions')->find($id);
         $pdf = Pdf::loadView('pdf_view', ['customerData' =>$customerData]);
-        return $pdf->download('registro_' . $id . '.pdf');
+        return $pdf->download('registro_' . $customerData->nombre . '.pdf');
     }
 
     public function formulario()
