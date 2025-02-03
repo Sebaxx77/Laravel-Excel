@@ -18,6 +18,8 @@ Route::get('/import_excel/index', [ImportExcel::class, 'index']);
 Route::post('/import_excel/import', [ImportExcel::class, 'import']);
 
 Route::get('/import_excel/formulario', [ImportExcel::class, 'formulario']);
+Route::get('/generate-pdf/{id}', [ImportExcel::class, 'generatePdf'])->name('generatePdf');
+
 
 Route::get('/', function () {
     return view('welcome');

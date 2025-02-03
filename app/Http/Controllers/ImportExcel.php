@@ -6,7 +6,7 @@ use App\Models\excelimportacion;
 use App\Imports\UsersImport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Maatwebsite\Excel\Validators\Failure;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Maatwebsite\Excel\Facades\Excel;
 
 
@@ -16,6 +16,13 @@ class ImportExcel extends Controller
     {
         $customerData = DB::table('excelimportacions')->orderBy('id', 'ASC')->get();
         return view('import_excel', compact('customerData'));
+    }
+
+    public function generatePdf($id)
+    {
+        $customerData = DB::table('excelimportacions')->find($id);
+        $pdf = Pdf::loadView('pdf_view', ['customerData' =>$customerData]);
+        return $pdf->download('registro_' . $id . '.pdf');
     }
 
     public function formulario()

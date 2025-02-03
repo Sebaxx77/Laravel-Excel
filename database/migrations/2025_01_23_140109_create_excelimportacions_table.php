@@ -21,7 +21,7 @@ class CreateExcelimportacionsTable extends Migration
             $table->date('fechanacimiento');
             $table->string('documento', 20);
             $table->boolean('activo');
-            $table->decimal('notas', 7, 5);
+            $table->decimal('notas', 7, 1);
             $table->longText('descripcion');
             $table->softDeletes();
             $table->timestamps();
