@@ -59,6 +59,7 @@
                         @foreach($customerData as $customer)
                         <tr>
                             <td>{{ $customer->nombre }}
+                                <br>
                                 <a href={{ route('generatePdf', $customer->id) }} class="btn btn-danger">Descargar
                                     PDF</a>
                             </td>
